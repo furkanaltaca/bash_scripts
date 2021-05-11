@@ -1,7 +1,7 @@
 #!/bin/bash
 
 domain=$1
-mainPath="/root/recon/$1"
+mainPath="/root/recon/$domain"
 
 mkdir -p $mainPath
 
