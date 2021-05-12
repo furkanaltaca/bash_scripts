@@ -4,7 +4,7 @@ domain=$1
 mainPath="/root/recon/$1"
 mkdir -p $mainPath
 
-python3 ~/tools/Sublist3r/sublist3r.py -d $domain -o $mainPath/subdomains.txt
+assetfinder -subs-only $domain | sort -u > $mainPath/subdomains.txt
 
 cat $mainPath/subdomains.txt | httprobe > $mainPath/httprobe.txt
 cat $mainPath/httprobe.txt | grep https:// > $mainPath/https.txt
