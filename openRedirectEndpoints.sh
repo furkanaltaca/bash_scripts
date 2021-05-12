@@ -25,3 +25,5 @@ done < $mainPath/qsreplace.txt
 
 rm -f $mainPath/ragno_urls.txt
 rm -f $mainPath/qsreplace.txt
+
+echo "done. output: $mainPath/openRedirectEndpoints.txt"
