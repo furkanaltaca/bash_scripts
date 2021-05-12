@@ -18,7 +18,7 @@ cat $mainPath/ragno_urls.txt \
 | qsreplace "http://google.com" \
 | while read target_url
 do
-if curl -s -L $target_url -I | grep -e "google.com" -e "HTTP" | grep -q "301\|302"
+if curl -s -L $target_url -I | grep -e "google.com" -e "HTTP" | grep -q " 301\| 302"
 then
  echo $target_url
 fi
