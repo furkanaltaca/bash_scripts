@@ -19,8 +19,7 @@ sudo rm -rf Sudomy-Output
 # merge and output all subdomains with httprobe
 cat assetfinder.txt subfinder.txt sudomy.txt | sort -u > subdomains.txt &&
 cat subdomains.txt | httprobe > httprobe.txt &&
-cat subdomains.txt | httprobe --prefer-https > httprobe-only-https.txt
 
 sudo rm -rf assetfinder.txt subfinder.txt sudomy.txt
 
-echo -e "$(cat all-unique-subdomains.txt|wc -l) domains found. \n Files: subdomains.txt, httprobe.txt, httprobe-only-https.txt \n Finished."
+echo -e "$(cat all-unique-subdomains.txt|wc -l) domains found. \n Files: subdomains.txt, httprobe.txt \n Finished."
