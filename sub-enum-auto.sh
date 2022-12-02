@@ -22,4 +22,7 @@ cat subdomains.txt | httprobe > httprobe.txt &&
 
 sudo rm -rf assetfinder.txt subfinder.txt sudomy.txt
 
-echo -e "$(cat all-unique-subdomains.txt|wc -l) domains found. \n Files: subdomains.txt, httprobe.txt \n Finished."
+mkdir $domain
+mv subdomains.txt httprobe.txt $domain
+
+echo -e "$(cat subdomains.txt|wc -l) domains found. \n Directory: ./$domain \n Finished."
