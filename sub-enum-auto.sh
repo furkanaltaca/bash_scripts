@@ -18,7 +18,7 @@ sudo rm -rf Sudomy-Output
 
 #crtsh
 curl -i -k "https://crt.sh/?q=%25.$domain" | html2text > crtsh-response.txt &&
-cat crtsh-response.txt | grep $domain | awk -F " " '{print $5}' | sort -u > crtsh.txt &&
+cat crtsh-response.txt | awk -F " " '{print $5}' | grep $domain | sort -u > crtsh.txt &&
 sudo rm -rf crtsh-response.txt
 
 # merge and output all subdomains with httprobe
