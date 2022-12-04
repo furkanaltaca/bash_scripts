@@ -21,12 +21,10 @@ curl -i -k "https://crt.sh/?q=%25.$domain" | html2text > crtsh-response.txt &&
 cat crtsh-response.txt | awk -F " " '{print $5}' | grep $domain | sort -u > crtsh.txt &&
 sudo rm -rf crtsh-response.txt
 
-# merge and output all subdomains with httprobe
+# append all subdomains in a file
 cat assetfinder.txt subfinder.txt sudomy.txt crtsh.txt | sort -u > subdomains.txt &&
-cat subdomains.txt | httprobe > httprobe.txt &&
 
 sudo rm -rf assetfinder.txt subfinder.txt sudomy.txt crtsh.txt
-
 
 echo -e "$(cat subdomains.txt|wc -l) domains found. \n Directory: ./$domain \n Finished."
 
