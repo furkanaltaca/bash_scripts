@@ -27,9 +27,7 @@ cat subdomains.txt | httprobe > httprobe.txt &&
 
 sudo rm -rf assetfinder.txt subfinder.txt sudomy.txt crtsh.txt
 
-mkdir $domain
-mv subdomains.txt httprobe.txt $domain
 
-echo -e "$(cat $domain/subdomains.txt|wc -l) domains found. \n Directory: ./$domain \n Finished."
+echo -e "$(cat subdomains.txt|wc -l) domains found. \n Directory: ./$domain \n Finished."
 
 
