@@ -26,6 +26,6 @@ cat assetfinder.txt subfinder.txt sudomy.txt crtsh.txt | sort -u > subdomains.tx
 
 sudo rm -rf assetfinder.txt subfinder.txt sudomy.txt crtsh.txt
 
-echo -e "$(cat subdomains.txt|wc -l) domains found. \n Directory: ./$domain \n Finished."
+echo -e "$(cat subdomains.txt|wc -l) domains found. \n Directory: ./subdomains.txt \n Finished."
 
 
