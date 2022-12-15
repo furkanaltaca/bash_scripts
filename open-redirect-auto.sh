@@ -1,8 +1,8 @@
 #!/bin/bash
 
-domain=$1
+domain_list=$1
 
-echo $domain | hakrawler -d 3 -dr -insecure -subs -timeout 1000 -u > hakrawler.txt
+cat $domain_list | hakrawler -d 3 -dr -insecure -subs -timeout 1000 -u > hakrawler.txt
 
 cat hakrawler.txt \
 | grep -a -i \=http \
