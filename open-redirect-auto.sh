@@ -2,9 +2,9 @@
 
 domain=$1
 
-python3 /opt/ragno/ragno.py -d $domain -q -o ragno_urls.txt
+echo $domain | hakrawler -d 3 -dr -insecure -subs -timeout 1000 -u > hakrawler.txt
 
-cat ragno_urls.txt \
+cat hakrawler.txt \
 | grep -a -i \=http \
 | qsreplace "http://google.com" \
 | while read target_url
