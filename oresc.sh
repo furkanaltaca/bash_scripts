@@ -31,13 +31,6 @@ then
 fi
 
 
-if [ "$no_args" == "true"  ]
-then
-   print_usage
-   exit
-fi
-
-
 if [ ! -z "$url_flag" ]
 then
    echo "$url_flag" > oresc-urls-to-check.txt
