@@ -28,26 +28,24 @@ fi
 
 if [ ! -z "$url_flag" ]
 then
-   echo "$url_flag" > xscript-urls-to-check.txt
+   echo "$url_flag" > xscript-temp-urls-to-check.txt
 elif [ ! -z "$list_flag" ]
 then
-   cat "$list_flag" > xscript-urls-to-check.txt
+   cat "$list_flag" > xscript-temp-urls-to-check.txt
 fi;
 
 
-cat xscript-urls-to-check.txt | waybackurls \
-| tee xscript_temp.txt \
+cat xscript-temp-urls-to-check.txt | waybackurls \
+| tee xscript-temp.txt \
 | grep "=" \
 | egrep -iv ".(jpg|jpeg|gif|css|tif|tiff|png|ttf|woff|woff2|ico|pdf|svg|txt|js)" \
-| qsreplace '"><script>confirm (1)</script>' \
-| tee xscript_combinedfuzz_temp.json \
-&& cat xscript_combinedfuzz_temp.json \
+| qsreplace '"><script>confirm (1)</script>' > xscript-temp-combinedfuzz.json \
+&& cat xscript-temp-combinedfuzz.json \
 | while read host do ; \
 do curl --silent --path-as-is --insecure "$host" \
 | grep -qs "<script>confirm (1)" \
-&& echo -e "$host \033[0;31mVulnerable\033[0m\n" \
-|| echo -e "$host \033[0;32mNot Vulnerable\033[0m\n"; done
+&& echo -e "$host \033[0;31mVulnerable\033[0m\n"; done
 
-rm xscript_temp.txt xscript_combinedfuzz_temp.json xscript-urls-to-check.txt
+rm xscript-temp.txt xscript-temp-combinedfuzz.json xscript-temp-urls-to-check.txt
 
 exit;

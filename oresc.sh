@@ -17,7 +17,8 @@ while getopts 'u:l:h' flag; do
   case "${flag}" in
     u) url_flag="${OPTARG}" ;;
     l) list_flag="${OPTARG}" ;;
-    h) print_usage ;;
+    h) print_usage 
+       exit 1 ;;
     *) print_usage 
        exit 1 ;;
   esac
